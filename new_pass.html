@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block body %}
+    <!-- Navigation -->
+
+    <section class="main-container col1-layout">
+        <div class="main container">
+            <div class="account-login">
+                <div class="page-title">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                {% if message.tags %}
+                                    <div class="alert alert-danger" role="alert">{% endif %}{{ message }}</div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <h2>Reset Your Password</h2>
+                </div>
+                <fieldset>
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="content">
+
+                            <ul class="form-list">
+                                <li>
+                                    <label for="pass">new Password <span class="required">*</span></label>
+                                    <input type="password" title="Password" id="pass"
+                                           class="input-text required-entry validate-password"
+                                           name="password1">
+                                </li>
+                                <li>
+                                    <label for="pass">Retype Password <span class="required">*</span></label>
+                                    <input type="password" title="Password" id="pass"
+                                           class="input-text required-entry validate-password"
+                                           name="password2">
+                                </li>
+                            </ul>
+                            <p class="required">* Required Fields</p>
+                            <div class="buttons-set">
+                                <button name="send" type="submit" class="button login"><span>Submit</span></button>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </fieldset>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </section>
+{% endblock %}

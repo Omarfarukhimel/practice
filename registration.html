@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <div class="main-container col2-right-layout">
+        <div class="main container">
+            <div class="row">
+                <section class="col-sm-9 col-xs-12">
+                    <form  method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                             {% if message.tags %}<div class="alert alert-danger" role="alert">{% endif %}{{ message }}</div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                        <div class="col-main">
+
+                            <div class="my-account">
+                                <div class="page-title">
+                                    <h2>Edit Account Information</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <div class="form-group">
+                                                    <label>First Name <span class="required">*</span></label>
+                                                    <input type="text" name="first_name" class="form-control"
+                                                           placeholder="Mr.">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Last Name <span class="required">*</span></label>
+                                                    <input type="text" name="last_name" class="form-control"
+                                                           placeholder="Roy">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>User Name <span class="required">*</span></label>
+                                                    <input type="text" name="username" class="form-control"
+                                                           placeholder="Roy">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group">
+                                                    <label>Email Address <span class="required">*</span></label>
+                                                    <input type="email" name="email" id="emailAddress"
+                                                           class="form-control"
+                                                           placeholder="vince-roy@example.com">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+
+                                        <ul class="list-unstyled">
+                                            <li>
+
+                                                <div class="form-group">
+                                                    <label>New Password <span
+                                                            class="required">*</span></label>
+                                                    <input type="password" name="pass1"
+                                                           class="form-control">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group">
+                                                    <label>Confirm New Password <span
+                                                            class="required">*</span></label>
+                                                    <input type="password" name="pass2"
+                                                           class="form-control">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="buttons-set">
+                                    <button type="submit" class="button login"><span>Save</span>
+                                    </button>
+                                    <p class="small fw-bold mt-2 pt-1 mb-0" style="font-size: 14px;">Do you have an
+                                        account?
+                                        <button><a href="{% url 'login' %}" class="forgot-word">Login</a></button>
+                                    </p>
+                                    <span class="required pull-right"><b>*</b> Required Field</span></div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
